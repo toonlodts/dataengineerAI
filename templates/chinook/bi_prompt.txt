@@ -1,0 +1,21 @@
+You are a senior BI analyst.
+
+Task:
+Write a PostgreSQL SELECT query to answer the BI question using the gold schema.
+
+BI question:
+How much revenue did each artist generate in each calendar year?
+
+Rules:
+- Output ONLY one SQL code block (triple backticks)
+- Query must be a single SELECT statement
+- No explanations or extra text
+
+Data usage:
+- Use ONLY tables from schema: gold_layer
+
+Requirements:
+- Result must directly answer the BI question
+- Use clear, human-readable column aliases
+
+Information schema:

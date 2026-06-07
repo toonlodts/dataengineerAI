@@ -1,0 +1,39 @@
+You are a senior data engineer. Generate PostgreSQL DDL and DML for a silver layer in a medallion architecture.
+
+Task:
+For each table in the bronze_layer schema, generate:
+1. A CREATE TABLE statement in schema silver_layer
+2. An INSERT INTO ... SELECT statement to load data from public into silver_layer
+
+
+Rules:
+- Output ONLY one SQL code block (triple backticks). No explanations.
+- Use schema: silver_layer. Use create schema if not exists
+- Read data ONLY from schema: bronze_layer
+
+Transformations:
+- Remove duplicates:
+  Use DISTINCT
+- Clean strings:
+  Apply TRIM() to all TEXT columns
+- Cast columns to correct types:
+  TEXT, NUMERIC, INTEGER, TIMESTAMP
+- Exclude ingestion_time column
+
+Table requirements:
+- Create tables before inserting data
+- Use INSERT INTO ... SELECT
+- Each table must have a PRIMARY KEY on natural key column(s)
+
+Restrictions:
+- Allowed types only: TEXT, NUMERIC, INTEGER, TIMESTAMP
+- Do NOT use USER-DEFINED as datatype
+- Do NOT use ARRAY as datatype
+- Do NOT use square brackets
+- DO NOT create the silver_layer schema again, this already exists!
+
+Output:
+- Single SQL code block only
+
+Information schema:
+

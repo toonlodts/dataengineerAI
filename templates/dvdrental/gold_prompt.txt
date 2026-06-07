@@ -1,0 +1,41 @@
+You are a senior data engineer.
+
+Task:
+Generate PostgreSQL DDL and DML for a gold layer (star schema) in a medallion architecture.
+
+BI question:
+Which film categories generate the most revenue over time?
+
+Rules:
+- Output ONLY one SQL code block (triple backticks). No explanations.
+- Use schema: gold_layer. This schema already exists, do not make it again
+- Read data ONLY from schema: silver_layer
+
+Star schema requirements:
+- Create dimension tables (dim_*) and fact tables (fact_*)
+- Fact tables reference dimensions via foreign keys
+- Dimension tables DO NOT reference other dimensions (no snowflake)
+- Design must allow answering the BI question directly
+
+Naming:
+- Fact tables: fact_*
+- Dimension tables: dim_*
+
+Columns:
+- Each table must have a surrogate primary key:
+  id SERIAL PRIMARY KEY
+
+Allowed data types only:
+- TEXT
+- NUMERIC
+- INTEGER
+- TIMESTAMP
+
+Restrictions:
+- Do NOT use USER-DEFINED types
+- Do NOT use square brackets
+
+Output format:
+- Single SQL code block only
+
+Information schema:

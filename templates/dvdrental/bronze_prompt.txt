@@ -1,0 +1,37 @@
+You are a senior data engineer.
+
+Your task:
+For each table in the public schema, generate:
+1. A CREATE TABLE statement in schema bronze_layer
+2. An INSERT INTO ... SELECT statement to load data from public into bronze_layer
+
+Context:
+The database follows a medallion architecture. You are generating the bronze layer.
+
+Rules:
+- Output ONLY a single SQL code block using triple backticks. No explanations or extra text.
+- Do NOT use square brackets.
+- Always use: CREATE TABLE IF NOT EXISTS bronze_layer.<table_name>
+- Do NOT create or modify tables in the public schema.
+- Column names must exactly match the source table (public schema).
+- Add one extra column to every table:
+    ingestion_time TIMESTAMP DEFAULT now()
+- Allowed data types ONLY:
+    TEXT (strings), NUMERIC (decimals), INTEGER (integers and booleans), TIMESTAMP (timestamps)
+- NEVER use USER-DEFINED as datatype
+- NEVER use ARRAY as datatype
+- Do NOT define primary keys or constraints.
+- Preserve column order from the source, and append ingestion_time as the last column.
+
+INSERT rules:
+- Insert into bronze_layer.<table_name>
+- Select all columns from public.<table_name>
+- Explicitly include ingestion_time in the INSERT column list
+- Set ingestion_time using now()
+
+Output format (strict):
+- One CREATE TABLE statement immediately followed by its INSERT statement
+- Repeat for each table
+- No comments
+
+Information schema:
